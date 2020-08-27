@@ -6,14 +6,14 @@ import androidx.lifecycle.ViewModelProvider
 import siwakorn.homework.faa.database.DatabaseDAO
 import siwakorn.homework.faa.databinding.FragmentContactBinding
 
-class ContactViewModelFactory (
+class GContactViewModelFactory (
     private val dataSource: DatabaseDAO,
     private val binding: FragmentContactBinding,
     private val application: Application
 ) : ViewModelProvider.Factory{
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(ContactViewModel::class.java)) {
-            return ContactViewModel(dataSource, binding, application) as T
+        if (modelClass.isAssignableFrom(GContactViewModel::class.java)) {
+            return GContactViewModel(dataSource, binding, application) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
