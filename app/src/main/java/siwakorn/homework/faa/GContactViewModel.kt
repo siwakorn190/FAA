@@ -8,7 +8,7 @@ import androidx.core.text.HtmlCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.Transformations
 import kotlinx.coroutines.*
-import siwakorn.homework.faa.database.Contact
+import siwakorn.homework.faa.database.GContact
 import siwakorn.homework.faa.database.DatabaseDAO
 import siwakorn.homework.faa.databinding.FragmentContactBinding
 
@@ -26,7 +26,7 @@ class GContactViewModel(
         formatContact(contacts)
     }
 
-    private fun formatContact(contact: List<Contact>): Spanned {
+    private fun formatContact(contact: List<GContact>): Spanned {
         val sb = StringBuilder()
         sb.apply {
             //append(resources.getString(R.string.title))
@@ -53,14 +53,14 @@ class GContactViewModel(
 
     fun onContactAdd() {
         uiScope.launch {
-            val newContact = Contact()
+            val newContact = GContact()
             newContact.name = binding.editTextTextPersonName.text.toString()
             newContact.phone = binding.editTextTextPersonPhone.text.toString()
             insert(newContact)
         }
     }
 
-    private suspend fun insert(contact: Contact) {
+    private suspend fun insert(contact: GContact) {
         withContext(Dispatchers.IO) {
             database.insert(contact)
         }
